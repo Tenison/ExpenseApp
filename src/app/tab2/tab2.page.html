@@ -1,17 +1,36 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title>
+            <div class="ion-text-wrap">
+                Create Expenses
+            </div>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-card class="ion-no-margin ion-margin-top">
+        <ion-card-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+        </ion-card-header>
+        <ion-card-content text-wrap>
+            <form [formGroup]="InputForm" (ngSubmit)="submit(InputForm.value)">
+                <ion-item class="ion-no-padding">
+                    <ion-label position="floating">Enter Total Amount (GHS)</ion-label>
+                    <ion-input name="inputAmount" type="number" required="true" formControlName="total"></ion-input>
+                </ion-item>
+
+                <ion-item class="ion-no-padding">
+                    <ion-label position="floating">Expense Purpose</ion-label>
+                    <ion-input name="inputAmount" required="true" formControlName="purpose"></ion-input>
+                </ion-item>
+
+                <ion-item class="ion-no-padding">
+                    <ion-label position="floating">Expense Description</ion-label>
+                    <ion-textarea name="inputDesciption" required="true" rows="4" formControlName="description"></ion-textarea>
+                </ion-item>
+                <ion-button margin expand="full" [disabled]="!InputForm.valid" type="submit">Create budget</ion-button>
+            </form>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

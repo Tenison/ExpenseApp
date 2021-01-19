@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Details</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item no-padding no-margin lines="full">
+        <ion-label slot="start">{{exp.date}}</ion-label>
+        <ion-icon name="radio" color="danger" slot="end"></ion-icon>
+        <!-- <ion-button slot="end" (click)='addDetails()' color="medium">
+            <ion-icon name="print"></ion-icon>
+        </ion-button> -->
+    </ion-item>
+    <ion-card>
+        <ion-card-content>
+            <ion-card-title padding>{{exp.purpose}}</ion-card-title>
+            {{exp.description}}
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-label color="dark">Total Amount : GHS {{exp.total}}</ion-label>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-item no-padding lines="full">
+        <ion-label>Expenses Details</ion-label>
+        <ion-button slot="end" (click)='addDetails()' color="medium">
+            <ion-icon name="add"></ion-icon>
+        </ion-button>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-sm="10" offset-sm="1">
+                <ion-card *ngFor="let costExp of exp.costExp.slice().reverse()" class="ion-no-margin ion-margin-vertical">
+                    <ion-item button (click)='removeItem(costExp.amount)' lines="full" detail="false" mode='md'>
+                        <ion-icon name="trash-outline" slot="end" color="danger"></ion-icon>
+                        GHS {{costExp.amount}}
+                    </ion-item>
+                    <ion-item class="ion-activated" lines="none" text-wrap>{{costExp.reason}}</ion-item>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer no-padding>
+    <ion-toolbar color="primary">
+        <div class="ion-text-wrap ion-no-padding ion-padding-horizontal">
+            Current Amount: GHS {{currentAmount}}
+        </div>
+    </ion-toolbar>
+</ion-footer>
