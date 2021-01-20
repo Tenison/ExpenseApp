@@ -4,7 +4,7 @@
 # Simple app for managing money
 # APK can be found here
 
-# features
+# ---------features---------
 # Creating Budgets 
 # Adding Expenditure
 # Adding Cost Items
